@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
         if geojson_data:
             save_geojson(geojson_data, f"itos-{code}.geojson")
-            print(f"GeoJSON saved to {filename}")
+            print(f"GeoJSON data saved for country code {code}")
         else:
             print(f"Failed to download GeoJSON data for country code {code}.")
 
