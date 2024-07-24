@@ -73,7 +73,7 @@ def save_geojson(geojson, filename):
         print(f"Failed to save GeoJSON data to {filename}. Error: {e}")
 
 def extract_country_code(country_list):
-    return [country['code') for country in country_list]
+    return [country['code'] for country in country_list]
 
 
 

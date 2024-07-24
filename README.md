@@ -1,1 +1,3 @@
-This script retrieves the list of locations available in HAPI and gets the geojson data from ITOS service
+### HDX HAPI GEOJSON
+
+This script runs monthly and provides supporting files for the [HDX HAPI Dashboard](https://ocha-dap.github.io/hdx-hapi-example/). The script retrieves a list of locations available in [HAPI](https://hdx-hapi.readthedocs.io/en/latest/) and gets the geojson data from the ITOS service.
