@@ -81,14 +81,16 @@ if __name__ == "__main__":
     country_data = fetch_data(country_query_url, LIMIT)
     country_list = extract_country_code(country_data)
 
-    for code in country_list:
-        geojson_url = f"https://apps.itos.uga.edu/codv2api/api/v1/themes/cod-ab/locations/{code}/versions/current/geoJSON/1"
-        geojson_data = download_geojson(geojson_url)
 
-        if geojson_data:
-            save_geojson(geojson_data, f"itos-{code}.geojson")
-            print(f"GeoJSON data saved for country code {code}")
-        else:
-            print(f"Failed to download GeoJSON data for country code {code}.")
+    #for code in country_list:
+    code = country_list[0]
+    geojson_url = f"https://apps.itos.uga.edu/codv2api/api/v1/themes/cod-ab/locations/{code}/versions/current/geoJSON/1"
+    geojson_data = download_geojson(geojson_url)
+
+    if geojson_data:
+        save_geojson(geojson_data, f"itos-{code}.geojson")
+        print(f"GeoJSON data saved for country code {code}")
+    else:
+        print(f"Failed to download GeoJSON data for country code {code}.")
 
 
