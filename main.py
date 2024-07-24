@@ -49,10 +49,9 @@ def download_geojson(geojson_url):
     """
     try:
         with request.urlopen(geojson_url) as response:
-            print(f"Downloading GeoJSON data from {geojson_url}")
             return json.loads(response.read())
     except error.URLError as e:
-        print(f"Failed to download data from {geojson_url}. URL error: {e.reason}")
+        print(f"URL error: {e.reason}")
     return None
 
 def save_geojson(geojson, filename):
@@ -63,14 +62,10 @@ def save_geojson(geojson, filename):
     - geojson (dict): The GeoJSON data.
     - filename (str): The filename to save the data to.
     """
-    # with open(filename, 'w') as file:
-    #     json.dump(geojson, file)
-    #     print(f"GeoJSON saved to {filename}")
     try:
         save_json(geojson, filename)
-        print(f"GeoJSON saved to {filename}")
     except Exception as e:
-        print(f"Failed to save GeoJSON data to {filename}. Error: {e}")
+        print(f"Error: {e}")
 
 def extract_country_code(country_list):
     return [country['code'] for country in country_list]
@@ -92,6 +87,7 @@ if __name__ == "__main__":
 
         if geojson_data:
             save_geojson(geojson_data, f"itos-{code}.geojson")
+            print(f"GeoJSON saved to {filename}")
         else:
             print(f"Failed to download GeoJSON data for country code {code}.")
 
