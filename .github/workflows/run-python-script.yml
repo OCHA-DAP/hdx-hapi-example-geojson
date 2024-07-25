@@ -30,7 +30,7 @@ jobs:
       if: success()
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        file_pattern: itos-*.geojson
+        file_pattern: "geojson/itos-*.geojson"
         commit_message: automatic - Data bundle updated
         push_options: "--force"
         skip_dirty_check: false
