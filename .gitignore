@@ -1,6 +1,3 @@
-# generated files
-*.geojson
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
