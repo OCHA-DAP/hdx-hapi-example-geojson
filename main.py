@@ -82,7 +82,8 @@ if __name__ == "__main__":
     #country_list = extract_country_code(country_data)
     #HAPI locations endpoint returns 249 countries which takes too long for the script to complete
     #just getting geojson for this subset of countries for now
-    country_list = ['AFG', 'BFA', 'CMR', 'CAF', 'TCD', 'COL', 'COD', 'SLV', 'ETH', 'GTM', 'HTI', 'HND', 'MLI', 'MOZ', 'MMR', 'NER', 'NGA', 'PSE', 'SOM', 'SSD', 'SDN', 'SYR', 'UKR', 'VEN', 'YEM']
+    #country_list = ['AFG', 'BFA', 'CMR', 'CAF', 'TCD', 'COL', 'COD', 'SLV', 'ETH', 'GTM', 'HTI', 'HND', 'MLI', 'MOZ', 'MMR', 'NER', 'NGA', 'PSE', 'SOM', 'SSD', 'SDN', 'SYR', 'UKR', 'VEN', 'YEM']
+    country_list = ['AFG']
 
     for code in country_list:
         geojson_url = f"https://apps.itos.uga.edu/codv2api/api/v1/themes/cod-ab/locations/{code}/versions/current/geoJSON/1"
