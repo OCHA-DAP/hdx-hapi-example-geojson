@@ -52,6 +52,13 @@ def download_geojson(geojson_url):
             return json.loads(response.read())
     except error.URLError as e:
         print(f"URL error: {e.reason}")
+    except error.HTTPError as e:
+        print(f"HTTP error occurred: {e.code} - {e.reason}")
+    except json.JSONDecodeError as e:
+        print(f"Failed to parse JSON data: {e.msg}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
     return None
 
 def save_geojson(geojson, filename):
