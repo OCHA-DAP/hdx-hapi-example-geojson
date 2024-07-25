@@ -51,7 +51,7 @@ def download_geojson(geojson_url):
         with request.urlopen(geojson_url) as response:
             return json.loads(response.read())
     except error.URLError as e:
-        print(f"URL error: {e.reason}")
+        print(f"Failed to download data from {geojson_url}. URL error: {e.reason}")
     except error.HTTPError as e:
         print(f"HTTP error occurred: {e.code} - {e.reason}")
     except json.JSONDecodeError as e:
@@ -74,7 +74,7 @@ def save_geojson(geojson, filename):
     except Exception as e:
         print(f"Error: {e}")
 
-def extract_country_code(country_list):
+def get_country_code(country_list):
     return [country['code'] for country in country_list]
 
 
@@ -86,7 +86,7 @@ LIMIT = 1000
 if __name__ == "__main__":
     country_query_url = f"{BASE_URL}metadata/location?output_format=json&app_identifier={APP_IDENTIFIER}"
     country_data = fetch_data(country_query_url, LIMIT)
-    country_list = extract_country_code(country_data)
+    country_list = get_country_code(country_data)
     #HAPI locations endpoint returns 249 countries which takes too long for the script to complete
     #just getting geojson for this subset of countries for now
     #country_list = ['AFG', 'BFA', 'CMR', 'CAF', 'TCD', 'COL', 'COD', 'SLV', 'ETH', 'GTM', 'HTI', 'HND', 'MLI', 'MOZ', 'MMR', 'NER', 'NGA', 'PSE', 'SOM', 'SSD', 'SDN', 'SYR', 'UKR', 'VEN', 'YEM']
