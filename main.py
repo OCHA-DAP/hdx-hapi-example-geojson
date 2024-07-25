@@ -79,17 +79,17 @@ LIMIT = 1000
 if __name__ == "__main__":
     country_query_url = f"{BASE_URL}metadata/location?output_format=json&app_identifier={APP_IDENTIFIER}"
     country_data = fetch_data(country_query_url, LIMIT)
-    #country_list = extract_country_code(country_data)
+    country_list = extract_country_code(country_data)
     #HAPI locations endpoint returns 249 countries which takes too long for the script to complete
     #just getting geojson for this subset of countries for now
-    country_list = ['AFG', 'BFA', 'CMR', 'CAF', 'TCD', 'COL', 'COD', 'SLV', 'ETH', 'GTM', 'HTI', 'HND', 'MLI', 'MOZ', 'MMR', 'NER', 'NGA', 'PSE', 'SOM', 'SSD', 'SDN', 'SYR', 'UKR', 'VEN', 'YEM']
+    #country_list = ['AFG', 'BFA', 'CMR', 'CAF', 'TCD', 'COL', 'COD', 'SLV', 'ETH', 'GTM', 'HTI', 'HND', 'MLI', 'MOZ', 'MMR', 'NER', 'NGA', 'PSE', 'SOM', 'SSD', 'SDN', 'SYR', 'UKR', 'VEN', 'YEM']
 
     for code in country_list:
         geojson_url = f"https://apps.itos.uga.edu/codv2api/api/v1/themes/cod-ab/locations/{code}/versions/current/geoJSON/1"
         geojson_data = download_geojson(geojson_url)
 
         if geojson_data:
-            save_geojson(geojson_data, f"itos-{code}.geojson")
+            save_geojson(geojson_data, f"geojson/itos-{code}.geojson")
             print(f"GeoJSON data saved for country code {code}")
         else:
             print(f"Failed to download GeoJSON data for country code {code}.")
